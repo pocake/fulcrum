@@ -38,13 +38,13 @@
     // set CSS transition event type
     if ( $.support.transition ) {
       transitionEnd = "TransitionEnd"
-      if ( $.browser.webkit ) {
+      // if ( $.browser.webkit ) {
         transitionEnd = "webkitTransitionEnd"
-      } else if ( $.browser.mozilla ) {
-        transitionEnd = "transitionend"
-      } else if ( $.browser.opera ) {
-        transitionEnd = "oTransitionEnd"
-      }
+      // } else if ( $.browser.mozilla ) {
+      //   transitionEnd = "transitionend"
+      // } else if ( $.browser.opera ) {
+      //   transitionEnd = "oTransitionEnd"
+      // }
     }
 
   })
@@ -276,7 +276,8 @@
     }
 
     if (options.trigger != 'manual') {
-      binder   = options.live ? 'live' : 'bind'
+      // binder   = options.live ? 'live' : 'bind'
+      binder   = 'bind'
       eventIn  = options.trigger == 'hover' ? 'mouseenter' : 'focus'
       eventOut = options.trigger == 'hover' ? 'mouseleave' : 'blur'
       this[binder](eventIn, enter)[binder](eventOut, leave)

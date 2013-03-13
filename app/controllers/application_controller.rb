@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  http_basic_authenticate_with name: "poc-fulcrum", password: ENV['BASIC_AUTHENTICATE_PASS'] unless Rails.env.development?
 
   before_filter :authenticate_user!, :set_locale
 
@@ -18,11 +19,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private 
+  private
 
   def set_locale
     if !current_user.nil? && !current_user.locale.nil? && !current_user.locale.empty?
-      I18n.locale = current_user.locale.to_sym 
+      I18n.locale = current_user.locale.to_sym
     else
       I18n.locale = :en
     end
